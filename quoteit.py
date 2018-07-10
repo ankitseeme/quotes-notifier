@@ -4,7 +4,7 @@ import time
 import sys
 from urllib.error import HTTPError
 from win10toast import ToastNotifier
-limit=20
+limit=1
 minMinute = 1
 duration= minMinute * 60
 def getquote():  
@@ -45,10 +45,10 @@ if __name__ == '__main__':
     Usage: quoteit.py [duration]
     duration is in minutes. Minimum is 1 """
     if (len(sys.argv)) == 2:
-        minMinute = sys.argv[1]
+        minMinute = int(sys.argv[1]) if iint(sys.argv[1]) > 1 else 1
         duration= int(minMinute) * 60
     if (len(sys.argv)) == 3:
-        limit = int(sys.argv[2])
+        limit = int(sys.argv[2]) if int(sys.argv[2]) > 1 else 1
     count=1
     while count <= limit:
         quote,author = callit(count)
